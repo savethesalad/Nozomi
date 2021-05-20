@@ -1,0 +1,14 @@
+image: node:latest
+
+cache:
+  paths:
+  - node_modules/
+
+job:
+  script:
+  - apt-get update -qy
+  - apt-get install -y ruby ruby-dev rubygems-integration
+  - npm install
+  - gem install --no-rdoc --no-ri dpl
+  - dpl --provider=heroku --app=test983 --api-key=77c1d58a-251e-4f94-82f3-313034271e2c
+# change app name and api key if necessary
